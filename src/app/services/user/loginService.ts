@@ -1,5 +1,5 @@
 
-import { getUrl } from "../../config/appConfig";
+import { host } from "../../config/appConfig";
 import { ResponseInterface } from "../../models/interfaces/ResponseInterface";
 
 export const loginService = async (
@@ -8,7 +8,7 @@ export const loginService = async (
 ): Promise<ResponseInterface> => {
     try {
         const response = await fetch(
-            "https://api-user-jade.vercel.app/api/user/signInUser",
+            `${host}/user/signInUser`,
             {
                 method: "POST",
                 headers: {
