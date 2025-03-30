@@ -1,0 +1,48 @@
+/* ErrorPage.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7fafc;
+    padding: 16px;
+  }
+  
+  .card {
+    /* background-color: white; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e53e3e; /* Red color */
+  }
+  
+  .message {
+    margin-top: 8px;
+    color: #4a5568; 
+    
+  }
+  
+  .button {
+    margin-top: 16px;
+    padding: 16px 24px;
+    background-color: #3182ce; /* Blue color */
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+  }
+  
