@@ -1,8 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { RouterProvider } from 'react-router-dom';
 import store from './redux/store';
 import { AppRoutes } from './routes/AppRoutes';
 
@@ -14,4 +12,3 @@ root.render(
     <AppRoutes />
   </Provider>
 );
-// reportWebVitals();

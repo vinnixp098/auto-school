@@ -1,35 +1,25 @@
 
 
-import { useLocation, useNavigate, useRouteError } from "react-router-dom";
-import styles from "./index.module.css"; // Importando o CSS Module
-import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./index.module.css";
 import { ResponseInterface } from "../../app/models/interfaces/ResponseInterface";
 
-const ErrorPage = () => {
-  const error = useRouteError();
+export const ErrorPage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const location = useLocation();
-
 
   const routeAtual = location.pathname;
 
-  const toBoolean = (value: string | null) => value?.toLowerCase() === "true";
 
   const dadosString = localStorage.getItem("dados");
   const dados: ResponseInterface = dadosString ? JSON.parse(dadosString) : null;
 
   const toBack = () => {
 
-    // dispatch(setNavigation({ ...navigation, header: menu, nav }));
-
     if (dados?.status === "success" && routeAtual !== "/") {
       navigate("/home");
-    //   dispatch(setNavigation({ ...navigation, header: true, nav: true }));
-    //   dispatch(setSnackbar({ status: dados.status }));
     } else {
       navigate("/");
-    //   dispatch(setNavigation({ ...navigation, header: false, nav: false }));
     }
   };
 
@@ -46,4 +36,3 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
