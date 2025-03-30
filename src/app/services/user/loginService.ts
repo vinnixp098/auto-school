@@ -1,4 +1,5 @@
-import appConfig from "../../config/appConfig";
+
+import { getUrl } from "../../config/appConfig";
 import { ResponseInterface } from "../../models/interfaces/ResponseInterface";
 
 export const loginService = async (
@@ -7,7 +8,7 @@ export const loginService = async (
 ): Promise<ResponseInterface> => {
     try {
         const response = await fetch(
-            `${appConfig.school.host}/user/signInUser`,
+            `${getUrl}/user/signInUser`,
             {
                 method: "POST",
                 headers: {
