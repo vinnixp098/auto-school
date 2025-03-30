@@ -8,7 +8,7 @@ export const loginService = async (
 ): Promise<ResponseInterface> => {
     try {
         const response = await fetch(
-            `${getUrl}/user/signInUser`,
+            "https://api-user-jade.vercel.app/api/user/signInUser",
             {
                 method: "POST",
                 headers: {
