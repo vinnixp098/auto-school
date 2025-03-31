@@ -1,18 +1,20 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import { LoginView } from "../views/Login";
 import { HomeView } from "../views/Home";
 import {ErrorPage} from "../views/ErrorPage";
 
-export const AppRoutes: React.FC = () => {
-
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LoginView />} />
-                <Route path="/home" element={<HomeView />} />
-                <Route path="*" element={<ErrorPage />} />
-            </Routes>
-        </BrowserRouter>
-    );
-};
+export const AppRoutes = createBrowserRouter([
+    {
+      path: "/",
+      element: <LoginView />,
+      errorElement: <ErrorPage />, 
+    },
+    {
+      path: "/home",
+      element: <HomeView />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
+    }
+  ]);
