@@ -7,7 +7,7 @@ export const LoginView = () => {
 	const navigate = useNavigate();
 	const [usuario, setUsuario] = useState<string>('');
 	const [senha, setSenha] = useState<string>('');
-	const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);  // Estado para mostrar a senha
+	const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false); 
 	const [error, setError] = useState<string>('');
 
 	const handleLogin = async (usuario: string, senha: string) => {
@@ -38,7 +38,7 @@ export const LoginView = () => {
 						placeholder="Usuário"
 					/>
 					<input
-						type={senhaVisivel ? 'text' : 'password'}  // Aqui alteramos o tipo da senha
+						type={senhaVisivel ? 'text' : 'password'} 
 						value={senha}
 						onFocus={() => setError('')}
 						onChange={(e) => setSenha(e.target.value)}
@@ -52,8 +52,6 @@ export const LoginView = () => {
 							<div>{senhaVisivel ? "Esconder" : "Mostrar"} senha</div>
 						</label>
 					}
-
-
 
 					{error && <div className={styles.errorMessage}>{error}</div>}
 

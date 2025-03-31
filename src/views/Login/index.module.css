@@ -1,19 +1,17 @@
-/* Container principal do login com fundo e transparência */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url('../../../public/auto_escola.jpg'); /* Caminho da imagem */
-  background-size: cover; /* A imagem ocupa toda a tela */
-  background-position: center; /* Centraliza a imagem */
-  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-image: url('../../../public/auto_escola.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   position: relative;
   overflow: hidden;
 }
 
-/* Sobreposição para a transparência */
 .container::after {
   content: '';
   position: absolute;
@@ -21,11 +19,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4); /* Cor preta com 40% de opacidade */
-  z-index: 1; /* Garante que a sobreposição fique acima da imagem */
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 1; 
 }
 
-/* Container do formulário de login */
 .containerLogin {
   display: flex;
   flex-direction: column;
@@ -34,13 +31,12 @@
   padding: 30px;
   border-radius: 15px;
   height: 400px;
-  width: 350px;
-  background: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+  width: 550px;
+  background: rgba(255, 255, 255, 0.9); 
   z-index: 2;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 .header {
   font-size: 2rem;
   font-weight: bold;
@@ -49,16 +45,14 @@
   text-align: center;
 }
 
-/* Formulário de entrada */
 .form {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: start;
   flex-direction: column;
   align-items: stretch;
 }
 
-/* Estilo dos inputs */
 .form input {
   width: 100%;
   padding: 12px;
@@ -71,11 +65,10 @@
   background-color: #f9f9f9;
 }
 
-/* Foco no input */
 .form input:focus {
-  border-color: #4caf50; /* Cor verde ao focar */
+  border-color: #4caf50; 
   outline: none;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Efeito de sombra ao focar */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
 }
 
 .form label {
@@ -87,18 +80,13 @@
   
 }
 
-
-
-
-/* Classe de erro */
 .inputError {
   border-color: #f44336;
   background-color: #ffe6e6;
 }
 
-/* Estilo do botão de login */
 .loginButton {
-  width: 100%;
+  width: 80%;
   padding: 12px;
   border: none;
   background-color: #4caf50;
@@ -108,15 +96,13 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover do botão */
 .loginButton:hover {
   background-color: #45a049;
 }
 
-/* Estilo da mensagem de erro */
 .errorMessage {
   color: #f44336;
   font-size: 0.875rem;
@@ -124,11 +110,10 @@
   text-align: center;
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 480px) {
   .containerLogin {
     width: 80%;
-    height: auto;
+    height: 50%;
     padding: 20px;
   }
 
