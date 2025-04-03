@@ -10,7 +10,6 @@ export const ErrorPage = () => {
 
   const routeAtual = location.pathname;
 
-
   const dadosString = localStorage.getItem("dados");
   const dados: ResponseInterface = dadosString ? JSON.parse(dadosString) : null;
 

@@ -1,42 +1,41 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
-import { useState } from "react";
-import { loginService } from "../../app/services/user/loginService";
+import { useEffect } from "react";
+import { HeaderComponent } from "../../components/Header";
 
 export const HomeView = () => {
   const navigate = useNavigate();
-  const [usuario, setUsuario] = useState<string>("");
-  const [senha, setSenha] = useState<string>("");
-  const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
 
-  const handleLogin = async (usuario: string, senha: string) => {
-    const response = await loginService(usuario, senha);
-    setError("");
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const token = localStorage.getItem('token');
+  //     console.log("token atualizado: ", token);
 
-    // Validação simples de login
-    if (response.status === "error") {
-      setError("Login ou senha inválidos");
-      return;
-    }
+  //     if (!token) {
+  //       navigate('/');
 
-    navigate("/home");
-  };
+  //     }
+  //   };
+
+  //   window.addEventListener("storage", handleStorageChange);
+
+  //   handleStorageChange();
+
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, [navigate]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.menu}>Menu</div>
-        <div className={styles.lista}>
-          <ul>
-            <li>Home</li>
-            <li>Cadastro</li>
-          </ul>
+      <HeaderComponent />
+      <div className={styles.containerBox}>
+        <div className={styles.containerItens}>
+          <div className={styles.containerItem} onClick={() => navigate("/alunos")}>Alunos</div>
+          <div className={styles.containerItem}>Instrutores</div>
+          <div className={styles.containerItem}>Veículos</div>
+          <div className={styles.containerItem}>Aulas</div>
         </div>
-      </div>
-      <div className={styles.containerItens}>
-        <div className={styles.containerLogin}>item 1</div>
-        <div className={styles.containerLogin}>item 2</div>
       </div>
     </div>
   );
