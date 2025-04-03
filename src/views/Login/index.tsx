@@ -5,6 +5,7 @@ import { loginService } from '../../app/services/user/loginService';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducers/authReducer';
 import { tokenService } from '../../app/services/user/loginByTokenUser';
+import { User } from "lucide-react";
 
 export const LoginView: React.FC = () => {
 	const navigate = useNavigate();
@@ -66,7 +67,7 @@ export const LoginView: React.FC = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.containerLogin}>
-				<div className={styles.header}>Login</div>
+				<div className={styles.header}>Login <User size ={28}  strokeWidth ={3} /></div>
 				<div className={styles.form}>
 					<input
 						type="text"

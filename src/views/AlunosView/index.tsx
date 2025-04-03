@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { HeaderComponent } from "../../components/Header";
 import { alunosService } from "../../app/services/aluno/alunosService";
 import { formatarTelefone } from "../../utils/formatarTelefone";
+import { Search, Plus, Pen, XCircle } from "lucide-react";
 
 interface Aluno {
 	aluno_id: number;
@@ -23,7 +24,16 @@ export const AlunosView = () => {
 
 	// Estado para o modal
 	const [modalAberto, setModalAberto] = useState(false);
+	const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
 	const [alunoSelecionado, setAlunoSelecionado] = useState<Aluno | null>(null);
+
+	// Estado para novo aluno
+	const [novoAluno, setNovoAluno] = useState({
+		nome: "",
+		cpf: "",
+		telefone: "",
+		categoria: "",
+	});
 
 	useEffect(() => {
 		const getAllStudents = async () => {
@@ -52,16 +62,34 @@ export const AlunosView = () => {
 		}
 	};
 
-	// Função para abrir o modal com detalhes do aluno
+	// Abrir modal de detalhes do aluno
 	const abrirModal = (aluno: Aluno) => {
 		setAlunoSelecionado(aluno);
 		setModalAberto(true);
 	};
 
-	// Função para fechar o modal
+	// Fechar modal de detalhes
 	const fecharModal = () => {
 		setModalAberto(false);
 		setAlunoSelecionado(null);
+	};
+
+	// Abrir modal de cadastro de aluno
+	const abrirModalCadastro = () => {
+		console.log("modal: ", modalCadastroAberto);
+		setModalCadastroAberto(true);
+	};
+
+	// Fechar modal de cadastro
+	const fecharModalCadastro = () => {
+		setModalCadastroAberto(false);
+	};
+
+	// Função para cadastrar um novo aluno (simulação)
+	const cadastrarAluno = () => {
+		console.log("Novo Aluno:", novoAluno);
+		alert("Aluno cadastrado com sucesso!");
+		fecharModalCadastro();
 	};
 
 	return (
@@ -82,7 +110,10 @@ export const AlunosView = () => {
 						<input type="date" onChange={(e) => console.log (e.target.value)} />
 					</div>
 					<div className={styles.filtro}>
-						<button onClick={handleAlunos}>Buscar</button>
+						<button onClick={handleAlunos} title="Buscar alunos"><Search size ={14} strokeWidth={3}/> Buscar</button>
+					</div>
+					<div className={styles.filtro}>
+						<button onClick={()=> abrirModalCadastro()} title="Cadastrar novo aluno" ><Plus size ={14} strokeWidth={3} /> Novo Aluno</button>
 					</div>
 				</div>
 
@@ -120,8 +151,9 @@ export const AlunosView = () => {
 												<button
 													className={styles.btnDetalhes}
 													onClick={() => abrirModal(aluno)}
+													title="Editar"
 												>
-													Ver Detalhes
+													<Pen size ={14} strokeWidth={3}/>
 												</button>
 											</td>
 										</tr>
@@ -157,6 +189,49 @@ export const AlunosView = () => {
 					</div>
 				</div>
 			)}
+
+			{/* Modal de Cadastro */}
+			{modalCadastroAberto && (
+				<div className={styles.modalOverlay}>
+					<div className={styles.modalContent}>
+						<h2>Cadastrar Aluno</h2>
+						<label>Nome:</label>
+						<input
+							type="text"
+							value={novoAluno.nome}
+							onChange={(e) => setNovoAluno({ ...novoAluno, nome: e.target.value })}
+						/>
+
+						<label>CPF:</label>
+						<input
+							type="text"
+							value={novoAluno.cpf}
+							onChange={(e) => setNovoAluno({ ...novoAluno, cpf: e.target.value })}
+						/>
+
+						<label>Telefone:</label>
+						<input
+							type="text"
+							value={novoAluno.telefone}
+							onChange={(e) => setNovoAluno({ ...novoAluno, telefone: e.target.value })}
+						/>
+
+						<label>Categoria:</label>
+						<input
+							type="text"
+							value={novoAluno.categoria}
+							onChange={(e) => setNovoAluno({ ...novoAluno, categoria: e.target.value })}
+						/>
+
+						<div className={styles.modalButtons}>
+							<button onClick={cadastrarAluno}>Salvar</button>
+							<button className={styles.btnFechar} onClick={fecharModalCadastro}>
+								<XCircle size={18} /> Fechar
+							</button>
+						</div>
+					</div>
+				</div>
+				)}
 		</div>
 	);
 };
