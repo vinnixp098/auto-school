@@ -46,7 +46,7 @@ export const LoginView: React.FC = () => {
 		return () => {
 			window.removeEventListener("storage", handleStorageChange);
 		};
-	}, [navigate]);
+	}, [navigate, dispatch]);
 
 
 	const handleLogin = async (usuario: string, senha: string) => {

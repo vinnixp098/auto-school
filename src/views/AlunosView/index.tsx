@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import { HeaderComponent } from "../../components/Header";
