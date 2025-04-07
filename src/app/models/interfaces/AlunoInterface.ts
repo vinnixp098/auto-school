@@ -1,14 +1,12 @@
-
 export interface AlunoInterface {
-    usuario_id?: number;
-    nome: string;
-    cpf?: string;
-    usuario: string;
-    telefone: string;
-    email: string;
-    senha?: string;
-    admin?: number;
-    instrutor?: number;
-    token?: string;
-  }
-  
+  aluno_id?: number;
+  nome: string;
+  cpf: string;
+  categoria: string;
+  categoria_descricao?: string;
+  data_inicio_processo: string;
+  data_final_processo: string;
+  data_matricula?: string;
+  telefone: string;
+  excluido?: number;
+}

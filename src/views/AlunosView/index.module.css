@@ -74,6 +74,9 @@
     background: #28a745;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
 }
 
 .filtros .filtro button:hover {
@@ -102,7 +105,8 @@
     text-align: left;
 }
 
-.tabela th, .tabela td {
+.tabela th,
+.tabela td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: center;
@@ -110,6 +114,16 @@
 
 .tabela tbody tr:hover {
     background: #f1f1f1;
+}
+
+.btnFechar{
+    background: red;
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    /* margin-top: 4px; */
 }
 
 /* Botão de detalhes */
@@ -137,17 +151,7 @@
 }
 
 /* Modal */
-.modalContent {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    text-align: start;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
+
 
 .modalContent h2 {
     margin-bottom: 15px;
@@ -161,21 +165,6 @@
     font-size: 16px;
 }
 
-.btnFechar {
-    margin-top: 15px;
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.btnFechar:hover {
-    background: #c82333;
-}
-
 /* Fundo do modal */
 .modalOverlay {
     position: fixed;
@@ -183,13 +172,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* escurece o fundo */
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+    /* importante para sobrepor o conteúdo */
+}
+
+.modalContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 560px;
+    max-width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Quando o modal estiver ativo */
@@ -202,13 +200,94 @@
     transform: scale(1);
 }
 
+.modalForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fieldItem {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+
+.fieldItem label {
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+.fieldItem input,
+.fieldItem select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%; /* volta com isso para manter o campo dentro do grid */
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.fieldItem input:focus,
+.fieldItem select:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Estilo específico para input de data */
+.fieldItem input[type="date"] {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.modalButtons {
+    display: flex;
+    justify-content:end;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.modalButtons button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modalButtons button:first-child {
+    background: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+   
+}
+.modalButtons button:last-child {
+    background: green;
+    color: white
+}
+
+
+
+
+
 /* Responsividade */
 @media (max-width: 768px) {
-    .tabela th, .tabela td {
+
+    .tabela th,
+    .tabela td {
         font-size: 14px;
         padding: 10px;
     }
-    
+
     .btnDetalhes {
         padding: 6px 10px;
         font-size: 12px;
@@ -235,5 +314,6 @@
 
     .filtros .filtro button {
         width: 100%;
+        
     }
 }

@@ -68,7 +68,7 @@ export const LoginView: React.FC = () => {
 		<div className={styles.container}>
 			<div className={styles.containerLogin}>
 				<div className={styles.header}>Login <User size ={28}  strokeWidth ={3} /></div>
-				<div className={styles.form}>
+				<form className={styles.form}>
 					<input
 						type="text"
 						value={usuario}
@@ -92,7 +92,7 @@ export const LoginView: React.FC = () => {
 						</label>
 					}
 					{error && <div className={styles.errorMessage}>{error}</div>}
-				</div>
+				</form>
 				<button
 					onClick={() => handleLogin(usuario, senha)}
 					className={styles.loginButton}
